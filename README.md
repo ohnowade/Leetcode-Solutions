@@ -20,6 +20,11 @@ Complexity: in both ways we visit each node exactly one, so $O(N)$.
 $153$. Find Minimum in Rotated Sorted Array  
 https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/  
 Similar to question $33$. Referring to the general rule for binary search, to decide the proceeding rule, we consider the relationship between the middle value and the lowest value of current search range. If the middle value is larger, the rotation point is not in the first half, which includes one range: [lowest value, middle value]. This leads to two situation. First, if a rotation point exists, it is also the minimum value and resides in the second half; Else, the lowest value is the minimum value. Then to decide whether there is a rotation, we compare the highest value to the lowest value. If the highest value is larger, there cannot be a rotation; while if it is less, there must be a rotation. Now if the middle value is less than the lowest value, current half includes two ranges: [lowest value, maximum value] and [minimum value, middle value], meaning that the minimum value has to be in current half.
+  
+  
+$209$. Minimum Size Subarray Sum  
+https://leetcode.com/problems/minimum-size-subarray-sum/  
+A sliding window problem. The window maintains the sum of its elements to be $\geq$ the target, and it slides from left to right. Every time an new element, pointed to by the right pointer, is included in the window, we try to shrink the window, by moving the left pointer, as much as possible, to achieve the minimum size for current right pointer. Since we will traverse through the minimum window size for each of the elements as the right pointer, the minimum one among them would be the answer.
 
 
 $253$. Meeting Rooms II  
@@ -30,3 +35,8 @@ The core of this problem is to keep track of the earliest end time of currently 
 $291$. Word Pattern II  
 https://leetcode.com/problems/word-pattern-ii/  
 This is a straightforward backtracking problem. In each recursion, if current character does not match to any string, match it to every prefix of remaining s and try if such match works, and stop when one works; if current character already matches to a string, check if the string is the following string in s and backtrack if it is not. Suppose the length of pattern is $m$ and that of s is $n$. The search process resembles placing m sticks among n objects, so the time and space complexity is $n\choose m$.
+  
+  
+$713$. Subarray Product Less Than K  
+https://leetcode.com/problems/subarray-product-less-than-k/  
+A sliding window problem. To find the total number of such continuous subarrays, we find the number of such subarrays for each of the element as the right pointer of the window, so that the sum of the numbers would be the final answer. Everytime we move the right pointer to the right, we update the left pointer so that the product of elements in the window is less than k. After the left pointer is updated, $right - left + 1$ is the number of such continuous subarrays that end with current right pointer, since it is the number of possible starting elements of a subarray within the range [left, right]. Note that 0 should be directly returned when $k\leq1$, otherwise the left pointer could be larger than the right pointer, and extra cases need to be handled. 
