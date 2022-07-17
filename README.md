@@ -46,6 +46,12 @@ $402$. Remove K Digits
 https://leetcode.com/problems/remove-k-digits/  
 One important thing to realize is that we want the smaller digit to be as left as possible. If a digit is smaller than a digit on its left, the left one should be removed to make the resulting number smaller. This means the ideal resulting number should have ascending digits from left to right. As we are processing each digit and try to maintain an ascending order by removing certain digits, a monotonic stack is the best option. As we pushing each digit into the monotonic stack, we only remove at most $k$ elements. After processing all digits, if we need to remove more digits, we should remove from the right, since the digits at the right side of the ascending sequence are the larger ones.  
   
+
+$416$. Partition Equal Subset Sum  
+https://leetcode.com/problems/partition-equal-subset-sum/  
+A knapsack problem. The peoblem is asking whether we can add a subset of all elements to form the half of their total sum. Then the DP table should be formed as follows. $dp[i][j]$ is whether we can form a sum of $j$ using first $i$ elements. Then the problem comes to, for $i$ and $j$, whether we use the $i_{th}$ element in subset to form a sum of $j$. If we use it, then the value depends on whether we can form a sum of $j - nums[i]$ using the first $i-1$ elements. If we do not use it, the value of $dp[i][j]$ depends on whether we can form a sum of $j$ using the first $i-1$ elements. Hence, the dynammic programming relationship is $dp[i][j] = dp[i-1][j - nums[i]\  ||\ dp[i-1][j]$. 
+  
+  
   
 $713$. Subarray Product Less Than K  
 https://leetcode.com/problems/subarray-product-less-than-k/  
