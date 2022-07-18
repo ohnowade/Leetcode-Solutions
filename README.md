@@ -52,6 +52,15 @@ https://leetcode.com/problems/partition-equal-subset-sum/
 A knapsack problem. The peoblem is asking whether we can add a subset of all elements to form the half of their total sum. Then the DP table should be formed as follows. $dp[i][j]$ is whether we can form a sum of $j$ using first $i$ elements. Then the problem comes to, for $i$ and $j$, whether we use the $i_{th}$ element in subset to form a sum of $j$. If we use it, then the value depends on whether we can form a sum of $j - nums[i]$ using the first $i-1$ elements. If we do not use it, the value of $dp[i][j]$ depends on whether we can form a sum of $j$ using the first $i-1$ elements. Hence, the dynammic programming relationship is $dp[i][j] = dp[i-1][j - nums[i]\  ||\ dp[i-1][j]$. 
   
   
+$523$. Continuous Subarray Sum  
+https://leetcode.com/problems/continuous-subarray-sum/  
+Assume we have two numbers $x = n\cdot k + a$, $y = m\cdot k + a$, with the same remainder when divided by $k$, then $x-y=(n-m)\cdot k$, which is a multiple of $k$. This means that as we traverse through the prefix sums of the numbers and keep track of the remainder of current sum divided by $k$, if at any time the remainder has been encountered before, then the subarray between current and last occurrences of the remainder has elements summing up to be a multiple of $k$. Since we want a subarray with size larger than 1, we want to map each remainder to the index at which we run into it. We also need to add entry $(0, -1)$ to the map in case the subarray starts from the beginning of nums.
+  
+  
+$678$. Valid Parenthesis String  
+https://leetcode.com/problems/valid-parenthesis-string/  
+Using classic two-pass way to check whether the string is valid. When going from left to right, $numRight \leq numLeft + numWild$ at any moment; when going from right to left, $numLeft \leq numRight + numWild$ at any moment. However, it might seem that there could be different assignment for a wildcard between when traversing from left to right and when from right to left. Here is a proof by contradiction to prove it is impossible. Suppose we have a wildcard that was assigned as a left parenthesis when going from left to right and assigned as a right parenthesis when going from right to left. This means that, when going from left to right, there is a right parenthesis at the right of the wildcard that cannot be paired with a left parenthesis. It also means that, when going from right to left, there is a left parenthesis at the left of the wildcard that cannot be paried with a right parenthesis. However, if it is the case, the right parenthesis at the right of the wildcard can be paired with the left parenthesis at the left, thus a contradiction.   
+  
   
 $713$. Subarray Product Less Than K  
 https://leetcode.com/problems/subarray-product-less-than-k/  
