@@ -69,7 +69,14 @@ A sliding window problem. To find the total number of such continuous subarrays,
   
 $729$. My Calendar I  
 https://leetcode.com/problems/my-calendar-i/  
-It appears that we should use binary search to search for insert position (leetcode $35$) of a booking, but the actual insertion is separated from search and requires $O(n)$. Hence, it is better if we just store the bookings in a binary search tree, for which we can insert during search.
+It appears that we should use binary search to search for insert position (leetcode $35$) of a booking, but the actual insertion is separated from search and requires $O(n)$. Hence, it is better if we just store the bookings in a binary search tree, for which we can insert during search.  
+  
+  
+$856$. Score of Parentheses  
+https://leetcode.com/problems/score-of-parentheses/  
+The first way to solve it is through stack. We first define two relationships. The first is the value of current pair of parenthesis, $curVal$, and the second is the sum of all parallel pairs directly embraced in a pair of parenthesis, $levelSum$. We can see that the two relationships are transitive - $levelSum$ of current level is the $curVal$ of the parenthesis embracing the pairs. Hence, we can use a stack to store the relationships. The top of the stack is current $curVal$, while the element right below it is current $levelSum$. For every left parenthesis we push a 0, while for every right parenthesis we pop the $curVal$ out and double it (set it to 1 if it is 0), and then we added $curVal$ to $levelSum$.  
+The second way to solve it is to realize that only a clean pair of parenthesis (one that does not embrace anything) contributes to the total sum, and they contribute to the total sum by $2^d$, where $d$ is the depth of this clean pair. Hence, we just need to keep track of current depth and only adds to total sum when we run into a clean pair. This method transforms $2\cdot(1 + 2\cdot(1+1+2\cdot2\cdot(1+2\cdot(1+1))+1))$ to $2+2^2+2^2+2^4+2^5+2^5+2^2$.  
+
 
   
 $2289$. Steps to Make Array Non-decreasing  
