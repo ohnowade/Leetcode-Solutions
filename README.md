@@ -76,8 +76,13 @@ $856$. Score of Parentheses
 https://leetcode.com/problems/score-of-parentheses/  
 The first way to solve it is through stack. We first define two relationships. The first is the value of current pair of parenthesis, $curVal$, and the second is the sum of all parallel pairs directly embraced in a pair of parenthesis, $levelSum$. We can see that the two relationships are transitive - $levelSum$ of current level is the $curVal$ of the parenthesis embracing the pairs. Hence, we can use a stack to store the relationships. The top of the stack is current $curVal$, while the element right below it is current $levelSum$. For every left parenthesis we push a 0, while for every right parenthesis we pop the $curVal$ out and double it (set it to 1 if it is 0), and then we added $curVal$ to $levelSum$.  
 The second way to solve it is to realize that only a clean pair of parenthesis (one that does not embrace anything) contributes to the total sum, and they contribute to the total sum by $2^d$, where $d$ is the depth of this clean pair. Hence, we just need to keep track of current depth and only adds to total sum when we run into a clean pair. This method transforms $2\cdot(1 + 2\cdot(1+1+2\cdot2\cdot(1+2\cdot(1+1))+1))$ to $2+2^2+2^2+2^4+2^5+2^5+2^2$.  
-
-
+  
+  
+$1353$. Maximum Number of Events That Can Be Attended  
+https://leetcode.com/problems/maximum-number-of-events-that-can-be-attended/  
+This is a greedy problem. To maximize the number of events, for all the events we can attend in a day, we should always attend the one that ends the earliest. Then, for each of the possible days, we maintain a collection of events that we can attend, by clearing the events that already ended and adding events that start at the day. By using a min-heap to store the end time of all the events, we always attend the one at the top of the heap, if there is one. The heap also faciliate the removal 
+of ended events.  
+  
   
 $2289$. Steps to Make Array Non-decreasing  
 https://leetcode.com/problems/steps-to-make-array-non-decreasing/  
