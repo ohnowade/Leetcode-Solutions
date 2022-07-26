@@ -1,6 +1,8 @@
 # Leetcode-Solutions
 ## General Rule for Binary Search:  
-To proceed in the binary search process, given a search range and the middle value, we decide which half of the range to discard and update the search range to the other half, based on the middle value. Consider $O(\log N)$ for complexity.
+To proceed in the binary search process, given a search range and the middle value, we decide which half of the range to discard and update the search range to the other half, based on the middle value. Consider $O(\log N)$ for complexity.  
+## General Rule for Union-Find:
+Initialize each elements with group id equal to itself. For each pair of connected elemtn, use the ```find``` function to trace the final group id for the two elements. If the gorup id are different, set one group id (indexed by that group id) to the other one. The group id should be indexed by the group id itself, instead of the element, the group id indexed by the element might not be the final group id of the group.  
   
 
 $33$. Search in Rotated Sorted Array  
