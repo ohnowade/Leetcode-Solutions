@@ -74,6 +74,11 @@ https://leetcode.com/problems/my-calendar-i/
 It appears that we should use binary search to search for insert position (leetcode $35$) of a booking, but the actual insertion is separated from search and requires $O(n)$. Hence, it is better if we just store the bookings in a binary search tree, for which we can insert during search.  
   
   
+$767$. Reorganize String  
+https://leetcode.com/problems/reorganize-string/  
+First thing to realize is that the string can be rearranged if and only if the maximum number of occurences of a number is less than or equal to half of the length of the string (or half of the length + 1 if the length is odd). Then, to rearrange the string, we insert characters with the order 0, 2, 4, ..., n and then 1, 3, 5, .... However, if the length of the string is odd, and the maximum number of a character is $\frac{length + 1}{2}$, this character has to be inserted from 0. Therefore, the first step of the rearrangement is to insert the maximum character to the position2 0, 2, 4, .... Then we follow the order and insert the remaining characters.  
+  
+  
 $856$. Score of Parentheses  
 https://leetcode.com/problems/score-of-parentheses/  
 The first way to solve it is through stack. We first define two relationships. The first is the value of current pair of parenthesis, $curVal$, and the second is the sum of all parallel pairs directly embraced in a pair of parenthesis, $levelSum$. We can see that the two relationships are transitive - $levelSum$ of current level is the $curVal$ of the parenthesis embracing the pairs. Hence, we can use a stack to store the relationships. The top of the stack is current $curVal$, while the element right below it is current $levelSum$. For every left parenthesis we push a 0, while for every right parenthesis we pop the $curVal$ out and double it (set it to 1 if it is 0), and then we added $curVal$ to $levelSum$.  
