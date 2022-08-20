@@ -97,6 +97,11 @@ This is a greedy problem. To maximize the number of events, for all the events w
 of ended events.  
   
   
+$1980$. Find Unique Binary String  
+https://leetcode.com/problems/find-unique-binary-string/  
+The first solution is to sort the array, traverse it in order, and find the first one that is missing. However, this method requires $O(N\log N)$. The second solution only requires $O(N)$. Notice that there are $N$ strings, each of which has $N$ bits, and the missing binary string is the one that is different from all strings in the array. Therefore, we can simply construct the missing binary string such that its $i_{th}$ bit is different from the $i_{th}$ bit of the $i_{th}$ string. 
+  
+  
 $2104$. Sum of Subarray Ranges  
 https://leetcode.com/problems/sum-of-subarray-ranges/  
 This problem needs us to compute the sum of differences between each subarray's largest element and smallest element. The sum can be transformed into the difference between the sum of the largest elements of in each subarrays and the sum of the smallest elements in each subarrays. Therefore, we need to sum up all the largest (smallest) elements of all subarrays. If we want to compute the largest (smallest) sum, for each of the element, we want to know in how many subarrays it is the largest (smallest) element. Therefore, we will use a descending (ascending) monotonic stack. Suppose the top two elements in the stak are $j$ and $k$, and current element we try to push into the stack is $i$. If $nums[i] > nums[k]$ ($nums[i] > nums[k]$), then the number of subarrays in which $nums[k]$ is the largest (smallest) is $(i-k)\cdot(k-j)$, since the subarrays can start with any element with index between $j$ and $k$ and end with any element with index between $k$ and $i$. Then the $k_{th}$ element contributes $nums[k]\cdot(i-k)\cdot(k-j)$ to the largest (smallest) sum. After computing the two sums, we subtract the samllest sum from the largest sum to get the final result.  
