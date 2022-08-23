@@ -102,6 +102,12 @@ This is a greedy problem. To maximize the number of events, for all the events w
 of ended events.  
   
   
+$1776$. Car Fleet II  
+https://leetcode.com/problems/car-fleet-ii/  
+This problem only asks the time for a car to bump into the first car (or fleet) ahead. One important thing to notice is that, assuming there are three cars $x$, $y$, and $z$ in order from left to right, if $y$ cannot bump into $z$, then $x$ can never bump into $z$. We traverse through the cars from right to left and make use of a stack. Each car will be pushed into stack. However, before it is pushed into stack, check whether the top car, $t$, in the stack can be bumped into by current car, $c$. If $c$ cannot bump into the $t$, or the $t$ will already have bumped into the other car (so its speed will change) before it is bumped into by current car, it should just be discarded. This is because, first, if $t$ will bump into another car, $a$, first, then the collision time of $c$ will be that for it to bump into $a$, and second, any future cars will never bump into $t$. Also, this is a monotonic stack since the collision time is strictly decreasing.  
+
+  
+  
 $1980$. Find Unique Binary String  
 https://leetcode.com/problems/find-unique-binary-string/  
 The first solution is to sort the array, traverse it in order, and find the first one that is missing. However, this method requires $O(N\log N)$. The second solution only requires $O(N)$. Notice that there are $N$ strings, each of which has $N$ bits, and the missing binary string is the one that is different from all strings in the array. Therefore, we can simply construct the missing binary string such that its $i_{th}$ bit is different from the $i_{th}$ bit of the $i_{th}$ string. 
