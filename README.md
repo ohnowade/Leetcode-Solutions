@@ -101,6 +101,12 @@ The first way to solve it is through stack. We first define two relationships. T
 The second way to solve it is to realize that only a clean pair of parenthesis (one that does not embrace anything) contributes to the total sum, and they contribute to the total sum by $2^d$, where $d$ is the depth of this clean pair. Hence, we just need to keep track of current depth and only adds to total sum when we run into a clean pair. This method transforms $2\cdot(1 + 2\cdot(1+1+2\cdot2\cdot(1+2\cdot(1+1))+1))$ to $2+2^2+2^2+2^4+2^5+2^5+2^2$.  
   
   
+$886$. Possible Bipartition  
+https://leetcode.com/problems/possible-bipartition/  
+A graph is bipartite if and only if, assuming each node is to be assigned one of two colors, two neighbors in the graph must have different colors. Therefore, we use DFS and alternatively assign a color to each one of the people. If we reach a person that already has been assigned with a color, but the color we are supposed to  assigned to it currently is the other color, then the graph is not bipartite, and the people cannot be splitted into two groups.  
+
+  
+  
 $1353$. Maximum Number of Events That Can Be Attended  
 https://leetcode.com/problems/maximum-number-of-events-that-can-be-attended/  
 This is a greedy problem. To maximize the number of events, for all the events we can attend in a day, we should always attend the one that ends the earliest. Then, for each of the possible days, we maintain a collection of events that we can attend, by clearing the events that already ended and adding events that start at the day. By using a min-heap to store the end time of all the events, we always attend the one at the top of the heap, if there is one. The heap also faciliate the removal 
